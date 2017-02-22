@@ -23,14 +23,14 @@ function store(minCust,maxCust,avgCookieSale) {
       // add to total qty
       total += simulatedCookieQty;
       // put results in the array
-      simulationArray.push("<li>" + hour + ": " + simulatedCookieQty + "</li>");
+      simulationArray.push("<li>" + hour + ": " + simulatedCookieQty + " cookies</li>");
     }
     // loop through array to make list items
     for (var i = 0; i < simulationArray.length; i++) {
       simulationResults += simulationArray[i];
     }
     // add total
-    simulationResults += "<li>Total: " + total + "</li>";
+    simulationResults += "<li>Total: " + total + " cookies</li>";
     return simulationResults;
   };
 }
