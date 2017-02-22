@@ -4,6 +4,7 @@ function store(minCust,maxCust,avgCookieSale) {
   this.maxCust = maxCust; // per hour
   this.avgCookieSale = avgCookieSale; // per hour
   this.simulatedSales = function() {
+    var simulationResults = "";
     var simulationArray = [];
     var total = 0;
     // loop through each hour store is open
@@ -22,17 +23,28 @@ function store(minCust,maxCust,avgCookieSale) {
       // add to total qty
       total += simulatedCookieQty;
       // put results in the array
-      simulationArray.push(hour + ": " + simulatedCookieQty);
+      simulationArray.push("<li>" + hour + ": " + simulatedCookieQty + "</li>");
     }
-    // add total to store's array
-    simulationArray.push("Total: " + total);
-    return simulationArray;
+    // loop through array to make list items
+    for (var i = 0; i < simulationArray.length; i++) {
+      simulationResults += simulationArray[i];
+    }
+    // add total
+    simulationResults += "<li>Total: " + total + "</li>";
+    return simulationResults;
   };
 }
 
-// Location	Min / Cust,	Max / Cust,	Avg Cookie / Sale
-var pioneerSquareShop = new store(17, 88, 5.2);
-var portlandAirportShop = new store(6, 24, 1.2)
-var washingtonSquareShop = new store(11, 38, 1.9);
-var sellwoodShop = new store(20, 48, 3.3);
-var pearlDistrictShop = new store(3, 24, 2.6);
+// make the store objects
+var pioneerSquareStore = new store(17, 88, 5.2);
+var portlandAirportStore = new store(6, 24, 1.2)
+var washingtonSquareStore = new store(11, 38, 1.9);
+var sellwoodStore = new store(20, 48, 3.3);
+var pearlDistrictStore = new store(3, 24, 2.6);
+
+// show simulated sales on page
+document.getElementById("pioneerSquareList").innerHTML = pioneerSquareStore.simulatedSales();
+document.getElementById("portlandAirportList").innerHTML = portlandAirportStore.simulatedSales();
+document.getElementById("washingtonSquareList").innerHTML = washingtonSquareStore.simulatedSales();
+document.getElementById("sellwoodList").innerHTML = sellwoodStore.simulatedSales();
+document.getElementById("pearlDistrictList").innerHTML = pearlDistrictStore.simulatedSales();
