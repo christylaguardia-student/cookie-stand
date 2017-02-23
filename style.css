@@ -1,16 +1,22 @@
-/*#f9f9ff
-#767782
-#666670
-#c6e7f5
-#98ccd5*/
+/*#1E1910
+#5E4A3A
+#F5EBD1
+#B0A994
+#9B5C58*/
 
-.highlight {
-  color: ;
+
+body {
+  background-color: #F5EBD1;
+  color: #1E1910;
   font-family: 'Abel', sans-serif; /* custom google font*/
 }
 
+.highlight {
+  color: #9B5C58
+}
+
 .data {
-  color: ;
+  color: #5E4A3A;
   font-family: "Geneva", sans-serif;
 }
 
@@ -25,4 +31,11 @@ body {
 
 .boxes {
   background-color: ;
+}
+
+table {
+  /*border: 2px solid black;*/
+  border-style: solid;
+  background-color: #B0A994;
+  color: #9B5C58;
 }
