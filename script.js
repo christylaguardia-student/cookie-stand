@@ -6,16 +6,16 @@ function store(name, minCust, maxCust, avgCookieSale) {
   this.avgCookieSale = avgCookieSale; // per hour
   this.simulatedSales = function() {
     var simulationResults = "";
-    var simulationArray = [this.name];
+    var simulationArray = ["<td class=\"leftColumn\">" + this.name + "</td>"];
     var total = 0;
     // loop through each hour store is open
     for (var i = 10; i < 18; i++) {
       // get the open store hour
       var hour = ((i + 11) % 12 + 1);
       if (i <= 12) {
-        hour += "am";
+        hour += " am";
       } else {
-        hour += "pm";
+        hour += " pm";
       }
       // get random amount of customers per hour
       var randomCustPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
@@ -31,7 +31,7 @@ function store(name, minCust, maxCust, avgCookieSale) {
       simulationResults += simulationArray[i];
     }
     // add total
-    simulationResults += "<td>" + total + "</td>";
+    simulationResults += "<td class=\"rightColumn\">" + total + "</td>";
     return simulationResults;
   };
 }
