@@ -10,7 +10,10 @@
     <h1>Daily Sales Projection</h1>
     <table class="data">
       <tr>
-        <th class="leftColumn">Store</th>
+        <th>Store</th>
+        <th>Min Customers/Hour</th>
+        <th>Max Customers/Hour</th>
+        <th>Avg Cookies/Hour</th>
         <th>10 AM</th>
         <th>11 AM</th>
         <th>12 AM</th>
@@ -28,6 +31,22 @@
       <tr id="sellwoodList"></tr>
       <tr id="pearlDistrictList"></tr>
     </table>
+
+    <form name="newStoreForm">
+      <h2>Add New Store</h2>
+      <div class="text">
+        <p>Store Name<br>
+          <input type="text" name="newStoreName"></p>
+        <p> Minimum Customers Per Hour<br>
+          <input type="number" name="newStoreMinCust" min="1" step="1">
+        <p>Maximum Customers Per Hour<br>
+          <input type="number" name="newStoreMaxCust" min="1" step="1">
+        <p>Average Cookies Sold Per Hour<br>
+          <input type="number" name="newStoreAvgCookie" min="1" step=".1"><br>
+          <br>
+        <input type="button" value="Add New Store" onclick="addNewStore()">
+      </div>
+    </form>
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>

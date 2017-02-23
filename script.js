@@ -1,12 +1,12 @@
 // create generic object
-function store(name, minCust, maxCust, avgCookieSale) {
+function store(name, minCust, maxCust, avgCookie) {
   this.name = name;
   this.minCust = minCust; // per hour
   this.maxCust = maxCust; // per hour
-  this.avgCookieSale = avgCookieSale; // per hour
+  this.avgCookie = avgCookie; // per hour
   this.simulatedSales = function() {
     var simulationResults = "";
-    var simulationArray = ["<td class=\"leftColumn\">" + this.name + "</td>"];
+    var simulationArray = ["<td class=\"leftColumn\">" + this.name + "</td>", "<td>" + this.minCust + "</td>", "<td>" + this.maxCust + "</td>", "<td>" + this.avgCookie + "</td>"];
     var total = 0;
     // loop through each hour store is open
     for (var i = 10; i < 18; i++) {
@@ -20,7 +20,7 @@ function store(name, minCust, maxCust, avgCookieSale) {
       // get random amount of customers per hour
       var randomCustPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
       // calculate amount of cookies per hour
-      var simulatedCookieQty = Math.floor(randomCustPerHour * this.avgCookieSale);
+      var simulatedCookieQty = Math.floor(randomCustPerHour * this.avgCookie);
       // add to total qty
       total += simulatedCookieQty;
       // put results in the array
@@ -49,3 +49,12 @@ document.getElementById("portlandAirportList").innerHTML = portlandAirportStore.
 document.getElementById("washingtonSquareList").innerHTML = washingtonSquareStore.simulatedSales();
 document.getElementById("sellwoodList").innerHTML = sellwoodStore.simulatedSales();
 document.getElementById("pearlDistrictList").innerHTML = pearlDistrictStore.simulatedSales();
+
+function addNewStore() {
+  var form = document.forms["newStoreForm"];
+  name = form.elements["newStoreName"].value;
+  minCust = form.elements["newStoreMinCust"].value;
+  maxCust = form.elements["newStoreMaxCust"].value;
+  avgCookie = form.elements["newStoreAvgCookie"].value;
+  var newStore = new store(name, minCust, maxCust, avgCookie);
+}
