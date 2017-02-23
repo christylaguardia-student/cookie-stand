@@ -5,37 +5,86 @@
 #9B5C58*/
 
 
-body {
-  background-color: #F5EBD1;
+.text {
+  /*background-color: #F5EBD1;*/
   color: #1E1910;
-  font-family: 'Abel', sans-serif; /* custom google font*/
+  font-family: 'Lato', sans-serif;
 }
 
-.highlight {
-  color: #9B5C58
+h1, h2, h3 {
+  font-family: 'Abel', sans-serif;
+  color: #9B5C58;
+}
+
+.bigHead {
+  font-family: 'Lato', sans-serif;
+  color: #5E4A3A;
+  font-size: 48px;
+}
+
+.container {
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  width: 10%;
+  min-width: 200px;
+}
+
+#light {
+  color: #1E1910;
+  background-color: #9B5C58;
+}
+
+#mediumLight {
+  color: #5E4A3A;
+  background-color: #B0A994;
+}
+
+#medium {
+  background-color: #F5EBD1;
+}
+
+#mediumDark {
+  color: #B0A994;
+  background-color: #5E4A3A;
+}
+
+#dark {
+  color: #9B5C58;
+  background-color: #1E1910;
+}
+
+.leftColumn {
+  text-align: left;
+}
+
+.rightColumn {
+  color: #9B5C58;
 }
 
 .data {
-  color: #5E4A3A;
+  color: #000000;
   font-family: "Geneva", sans-serif;
-}
-
-.text {
-  color: ;
-  font-family: "Georgia", serif;
-}
-
-body {
-  background-color: ;
-}
-
-.boxes {
-  background-color: ;
+  text-align: right;
 }
 
 table {
-  /*border: 2px solid black;*/
-  border-style: solid;
+  border: 2px solid #9B5C58;
+  border-spacing: 0px;
+}
+
+th, td {
+  border-bottom: 1px solid #F5EBD1;
+  padding: 10px;
+}
+
+th {
+  text-align: center;
   background-color: #B0A994;
-  color: #9B5C58;
+  border: none;
+}
+
+tr:hover {
+  background-color: #F5EBD1;
+  /*color: #9B5C58;*/
 }
