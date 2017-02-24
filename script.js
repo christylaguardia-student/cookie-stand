@@ -1,5 +1,12 @@
 // do this on page load
-makeTable();
+var stores = [];
+stores.push(new store("Pioneer Square", 17, 88, 5.2));
+stores.push(new store("Portland Airport", 6, 24, 1.2));
+stores.push(new store("Washington Square", 11, 38, 1.9));
+stores.push(new store("Sellwood", 20, 48, 3.3));
+stores.push(new store("Pearl District", 3, 24, 2.6));
+console.log(stores);
+buildTable();
 
 // create generic object
 function store(name, minCust, maxCust, avgCookie) {
@@ -32,11 +39,12 @@ function store(name, minCust, maxCust, avgCookie) {
       simulationArray.push("Total", simulationTotal);
       return simulationArray;
   };
+  console.log("store object created: " + this.name);
 }
 
 // use to add tags to store data
-function makeTableRow(store) {
-  var storeRow = "<tr><td>" + store.name + "</td>";
+function buildTableRow(store) {
+  var storeRow = "<tr><td class=\"leftColumn\">" + store.name + "</td>";
   storeRow += "<td>" + store.minCust + "</td>";
   storeRow += "<td>" + store.maxCust + "</td>";
   storeRow += "<td>" + store.avgCookie + "</td>";
@@ -45,37 +53,39 @@ function makeTableRow(store) {
     storeRow += "<td>" + storeResults[i] + "</td>";
   }
   storeRow += "</tr>";
-  total = storeResults[18];
+  // TODO: total = storeResults[18];
+  console.log("created table row for: " + store.name);
   return storeRow;
 }
 
-function makeTable() {
-  // make the store objects
-  var store1 = new store("Pioneer Square", 17, 88, 5.2);
-  var store2 = new store("Portland Airport", 6, 24, 1.2)
-  var store3 = new store("Washington Square", 11, 38, 1.9);
-  var store4 = new store("Sellwood", 20, 48, 3.3);
-  var store5 = new store("Pearl District", 3, 24, 2.6);
-  // get headers
-  var tableData = "<tr><th>Store Name</th><th>Min Cust/Hr</th><th>Max Cust/Hr</th><th>Avg Cookies Sold/Hr</th>";
-  tableData += "<th>10AM</th><th>11AM</th><th>12PM</th><th>1PM</th><th>2PM</th><th>3PM</th><th>4PM</th><th>5PM</th><th>Total</th></tr>"
-  // get store data with table tags
-  tableData +=  makeTableRow(store1);
-  tableData += makeTableRow(store2);
-  tableData += makeTableRow(store3);
-  tableData += makeTableRow(store4);
-  tableData += makeTableRow(store5);
-  // add the total
-  // tableData =+ "<tr><td colspan=\"12\">Total</td><td>" + total + "</td></tr>";
-  // show table data on the page
+function buildTable() {
+  // add headers
+  var tableData = "<tr><th rowspan=\"2\">Store Name</th>";
+  tableData += "<th rowspan=\"2\">Min Cust/Hr</th>";
+  tableData += "<th rowspan=\"2\">Max Cust/Hr</th>";
+  tableData += "<th rowspan=\"2\">Avg Cookies Sold/Hr</th>";
+  tableData += "<th colspan=\"9\">Projected Cookies Sold</th></tr>"
+  tableData += "<tr><th>10AM</th><th>11AM</th><th>12PM</th><th>1PM</th><th>2PM</th><th>3PM</th><th>4PM</th><th>5PM</th>";
+  tableData += "<th>Total</th></tr>";
+  // loop through each store and get data
+  for (var i = 0; i < stores.length; i++) {
+    var storeRow = buildTableRow(stores[i]);
+    tableData += storeRow;
+  }
+  // TODO: add the total
+  // print to page
   document.getElementById("simulatedSalesData").innerHTML = tableData;
+  console.log("table built!");
 }
 
 function addNewStore() {
+  // get user's input
   var form = document.forms["newStoreForm"];
   name = form.elements["newStoreName"].value;
   minCust = form.elements["newStoreMinCust"].value;
   maxCust = form.elements["newStoreMaxCust"].value;
   avgCookie = form.elements["newStoreAvgCookie"].value;
-  var newStore = new store(name, minCust, maxCust, avgCookie);
+  stores.push(new store(name, minCust, maxCust, avgCookie));
+  console.log("added new store: " + name);
+  buildTable();
 }
