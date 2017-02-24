@@ -103,6 +103,29 @@ tr:hover {
 
 /*Form*/
 
+fieldset {
+  float: left;
+  text-align: right;
+  border: 2px solid #9B5C58;
+}
+
 input {
-  font-size: 14px;
+  /*font-size: 16px;*/
+  margin: 10px;
+}
+
+/*Button*/
+.button {
+  padding: 10px;
+  min-width: 40px;
+  color: #FFFFFF;
+  background-color: #1E1910;
+  border: 2px solid #1E1910;
+}
+
+.button:hover {
+  color: #9B5C58;
+  background-color: #F5EBD1;
+  border: 2px solid #9B5C58;
+  cursor: pointer;
 }

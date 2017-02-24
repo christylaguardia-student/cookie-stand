@@ -8,44 +8,37 @@
   <body>
     <h1 class="bigHead">Chip &amp; Dough's</h1>
     <h1>Daily Sales Projection</h1>
-    <table class="data">
-      <tr>
-        <th>Store</th>
-        <th>Min Customers/Hour</th>
-        <th>Max Customers/Hour</th>
-        <th>Avg Cookies/Hour</th>
-        <th>10 AM</th>
-        <th>11 AM</th>
-        <th>12 AM</th>
-        <th>1 PM</th>
-        <th>2 PM</th>
-        <th>3 PM</th>
-        <th>4 PM</th>
-        <th>5 PM</th>
-        <th>Total</th>
-      </tr>
-      <tr id="tableHeaders"></tr>
-      <tr id="pioneerSquareList"></tr>
-      <tr id="portlandAirportList"></tr>
-      <tr id="washingtonSquareList"></tr>
-      <tr id="sellwoodList"></tr>
-      <tr id="pearlDistrictList"></tr>
-    </table>
-
+    <table class="data" id="simulatedSalesData"></table>
+    <br>
     <form name="newStoreForm">
-      <h2>Add New Store</h2>
-      <div class="text">
-        <p>Store Name<br>
-          <input type="text" name="newStoreName"></p>
-        <p> Minimum Customers Per Hour<br>
-          <input type="number" name="newStoreMinCust" min="1" step="1">
-        <p>Maximum Customers Per Hour<br>
-          <input type="number" name="newStoreMaxCust" min="1" step="1">
-        <p>Average Cookies Sold Per Hour<br>
-          <input type="number" name="newStoreAvgCookie" min="1" step=".1"><br>
-          <br>
-        <input type="button" value="Add New Store" onclick="addNewStore()">
-      </div>
+      <fieldset class="data">
+        <legend>Add New Store</legend>
+        <span>Store Name</span>
+        <input type="text" name="newStoreName"><br>
+        <span>Minimum Customers Per Hour</span>
+        <input type="number" name="newStoreMinCust" min="1" step="1"><br>
+        <span>Maximum Customers Per Hour</span>
+        <input type="number" name="newStoreMaxCust" min="1" step="1"><br>
+        <span>Average Cookies Sold Per Hour</span>
+        <input type="number" name="newStoreAvgCookie" min="1" step=".1"><br>
+        <br>
+        <input class="button" type="button" value="Add New Store" onclick="addNewStore()">
+      </fieldset>
+    </form>
+    <form name="editStoreForm">
+      <fieldset class="data">
+        <legend>Edit Store Info.</legend>
+        <span>Store Name</span>
+        <input type="text" name="editStoreName"><br>
+        <span>Minimum Customers Per Hour</span>
+        <input type="number" name="editStoreMinCust" min="1" step="1"><br>
+        <span>Maximum Customers Per Hour</span>
+        <input type="number" name="editStoreMaxCust" min="1" step="1"><br>
+        <span>Average Cookies Sold Per Hour</span>
+        <input type="number" name="editStoreAvgCookie" min="1" step=".1"><br>
+        <br>
+        <input class="button" type="button" value="Edit Store Info" onclick="editStore()">
+      </fieldset>
     </form>
     <script type="text/javascript" src="script.js"></script>
   </body>

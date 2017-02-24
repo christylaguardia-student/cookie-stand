@@ -1,3 +1,6 @@
+// do this on page load
+makeTable();
+
 // create generic object
 function store(name, minCust, maxCust, avgCookie) {
   this.name = name;
@@ -5,14 +8,13 @@ function store(name, minCust, maxCust, avgCookie) {
   this.maxCust = maxCust; // per hour
   this.avgCookie = avgCookie; // per hour
   this.simulatedSales = function() {
-    var simulationResults = "";
-    var simulationArray = ["<td class=\"leftColumn\">" + this.name + "</td>", "<td>" + this.minCust + "</td>", "<td>" + this.maxCust + "</td>", "<td>" + this.avgCookie + "</td>"];
-    var total = 0;
-    // loop through each hour store is open
+    var simulationArray = [];
+    var simulationTotal = 0;
+    // loop through each hour store is open, 10am to 6pm
     for (var i = 10; i < 18; i++) {
-      // get the open store hour
+      // get hour in 12 hour am/pm format
       var hour = ((i + 11) % 12 + 1);
-      if (i <= 12) {
+      if (i < 12) {
         hour += " am";
       } else {
         hour += " pm";
@@ -21,34 +23,53 @@ function store(name, minCust, maxCust, avgCookie) {
       var randomCustPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
       // calculate amount of cookies per hour
       var simulatedCookieQty = Math.floor(randomCustPerHour * this.avgCookie);
-      // add to total qty
-      total += simulatedCookieQty;
       // put results in the array
-      simulationArray.push("<td>" + simulatedCookieQty + "</td>");
+      simulationArray.push(hour, simulatedCookieQty);
+      // add to total qty
+      simulationTotal += simulatedCookieQty;
     }
-    // loop through array to make list items
-    for (var i = 0; i < simulationArray.length; i++) {
-      simulationResults += simulationArray[i];
-    }
-    // add total
-    simulationResults += "<td class=\"rightColumn\">" + total + "</td>";
-    return simulationResults;
+      // put the total in the array
+      simulationArray.push("Total", simulationTotal);
+      return simulationArray;
   };
 }
 
-// make the store objects
-var pioneerSquareStore = new store("Pioneer Square", 17, 88, 5.2);
-var portlandAirportStore = new store("Portland Airport", 6, 24, 1.2)
-var washingtonSquareStore = new store("Washington Square", 11, 38, 1.9);
-var sellwoodStore = new store("Sellwood", 20, 48, 3.3);
-var pearlDistrictStore = new store("Pearl District", 3, 24, 2.6);
+// use to add tags to store data
+function makeTableRow(store) {
+  var storeRow = "<tr><td>" + store.name + "</td>";
+  storeRow += "<td>" + store.minCust + "</td>";
+  storeRow += "<td>" + store.maxCust + "</td>";
+  storeRow += "<td>" + store.avgCookie + "</td>";
+  var storeResults = store.simulatedSales();
+  for (var i = 1; i < storeResults.length; i += 2) {
+    storeRow += "<td>" + storeResults[i] + "</td>";
+  }
+  storeRow += "</tr>";
+  total = storeResults[18];
+  return storeRow;
+}
 
-// show simulated sales on page
-document.getElementById("pioneerSquareList").innerHTML = pioneerSquareStore.simulatedSales();
-document.getElementById("portlandAirportList").innerHTML = portlandAirportStore.simulatedSales();
-document.getElementById("washingtonSquareList").innerHTML = washingtonSquareStore.simulatedSales();
-document.getElementById("sellwoodList").innerHTML = sellwoodStore.simulatedSales();
-document.getElementById("pearlDistrictList").innerHTML = pearlDistrictStore.simulatedSales();
+function makeTable() {
+  // make the store objects
+  var store1 = new store("Pioneer Square", 17, 88, 5.2);
+  var store2 = new store("Portland Airport", 6, 24, 1.2)
+  var store3 = new store("Washington Square", 11, 38, 1.9);
+  var store4 = new store("Sellwood", 20, 48, 3.3);
+  var store5 = new store("Pearl District", 3, 24, 2.6);
+  // get headers
+  var tableData = "<tr><th>Store Name</th><th>Min Cust/Hr</th><th>Max Cust/Hr</th><th>Avg Cookies Sold/Hr</th>";
+  tableData += "<th>10AM</th><th>11AM</th><th>12PM</th><th>1PM</th><th>2PM</th><th>3PM</th><th>4PM</th><th>5PM</th><th>Total</th></tr>"
+  // get store data with table tags
+  tableData +=  makeTableRow(store1);
+  tableData += makeTableRow(store2);
+  tableData += makeTableRow(store3);
+  tableData += makeTableRow(store4);
+  tableData += makeTableRow(store5);
+  // add the total
+  // tableData =+ "<tr><td colspan=\"12\">Total</td><td>" + total + "</td></tr>";
+  // show table data on the page
+  document.getElementById("simulatedSalesData").innerHTML = tableData;
+}
 
 function addNewStore() {
   var form = document.forms["newStoreForm"];
