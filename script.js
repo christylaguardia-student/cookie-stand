@@ -31,26 +31,34 @@ function store(name, minCust, maxCust, avgCookie) {
       // calculate amount of cookies per hour
       var simulatedCookieQty = Math.floor(randomCustPerHour * this.avgCookie);
       // put results in the array
-      simulationArray.push(hour, simulatedCookieQty);
+      simulationArray.push([hour, randomCustPerHour, simulatedCookieQty]);
+      // simulationArray.push([hour, randomCustPerHour, simulatedCookieQty]);
       // add to total qty
       simulationTotal += simulatedCookieQty;
     }
       // put the total in the array
-      simulationArray.push("Total", simulationTotal);
+      simulationArray.push(["Total","Total",simulationTotal]);
+      console.log("simulated sales array for " + this.name + ":");
+      console.log(simulationArray);
       return simulationArray;
   };
   console.log("store object created: " + this.name);
 }
 
-// use to add tags to store data
+// use this function to add the table tags to store data
 function buildTableRow(store) {
+  // make row for each store
   var storeRow = "<tr><td class=\"leftColumn\">" + store.name + "</td>";
   storeRow += "<td>" + store.minCust + "</td>";
   storeRow += "<td>" + store.maxCust + "</td>";
   storeRow += "<td>" + store.avgCookie + "</td>";
+  // calculate simulated cookie sales
   var storeResults = store.simulatedSales();
-  for (var i = 1; i < storeResults.length; i += 2) {
-    storeRow += "<td>" + storeResults[i] + "</td>";
+  console.log("simulated sales for " + store.name + ": " + storeResults);
+  // loop through each hour and make cell for each calculated qty
+  // for (var i = 2; i < storeResults.length; i += 3) { // the qty is every third item in the array
+  for (var i = 0; i < storeResults.length; i++) {
+    storeRow += "<td>" + storeResults[i][2] + "</td>";
   }
   storeRow += "</tr>";
   // TODO: total = storeResults[18];
@@ -72,7 +80,7 @@ function buildTable() {
     var storeRow = buildTableRow(stores[i]);
     tableData += storeRow;
   }
-  // TODO: add the total
+  // TODO: add the total of all stores
   // print to page
   document.getElementById("simulatedSalesData").innerHTML = tableData;
   console.log("table built!");
@@ -85,7 +93,10 @@ function addNewStore() {
   minCust = form.elements["newStoreMinCust"].value;
   maxCust = form.elements["newStoreMaxCust"].value;
   avgCookie = form.elements["newStoreAvgCookie"].value;
+  // create new store object
   stores.push(new store(name, minCust, maxCust, avgCookie));
   console.log("added new store: " + name);
+  // rebuild table with the new store
+  // TODO: probably shoudn't rebuild table, just add the new store
   buildTable();
 }
