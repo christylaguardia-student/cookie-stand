@@ -3,43 +3,57 @@
   <head>
     <title>Chip &amp; Dough</title>
     <link href="style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abel|Lato|Oswald:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
   </head>
   <body>
-    <h1 class="bigHead">Chip &amp; Dough's</h1>
-    <h1>Daily Sales Projection</h1>
-    <table class="data" id="simulatedSalesData"></table>
-    <br>
-    <form name="newStoreForm">
-      <fieldset class="data">
-        <legend>Add New Store</legend>
-        <span>Store Name</span>
-        <input type="text" name="newStoreName"><br>
-        <span>Minimum Customers Per Hour</span>
-        <input type="number" name="newStoreMinCust" min="1" step="1"><br>
-        <span>Maximum Customers Per Hour</span>
-        <input type="number" name="newStoreMaxCust" min="1" step="1"><br>
-        <span>Average Cookies Sold Per Hour</span>
-        <input type="number" name="newStoreAvgCookie" min="1" step=".1"><br>
-        <br>
-        <input class="button" type="button" value="Add New Store" onclick="addNewStore()">
-      </fieldset>
-    </form>
-    <form name="editStoreForm">
-      <fieldset class="data">
-        <legend>Edit Store Info.</legend>
-        <span>Store Name</span>
-        <input type="text" name="editStoreName"><br>
-        <span>Minimum Customers Per Hour</span>
-        <input type="number" name="editStoreMinCust" min="1" step="1"><br>
-        <span>Maximum Customers Per Hour</span>
-        <input type="number" name="editStoreMaxCust" min="1" step="1"><br>
-        <span>Average Cookies Sold Per Hour</span>
-        <input type="number" name="editStoreAvgCookie" min="1" step=".1"><br>
-        <br>
-        <input class="button" type="button" value="Edit Store Info" onclick="editStore()">
-      </fieldset>
-    </form>
+    <header>
+      <h1 class="bigHead">Chip &amp; Dough's</h1>
+      <nav>
+        <ul>
+          <li><a href="cookies.html">Cookies</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="store.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section>
+      <h1>Daily Sales Projection</h1>
+      <table class="data" id="simulatedSalesData"></table>
+      <br>
+      <form name="newStoreForm">
+        <fieldset class="data">
+          <legend>Add New Store</legend>
+          <span>Store Name</span>
+          <input type="text" name="newStoreName"><br>
+          <span>Minimum Customers Per Hour</span>
+          <input type="number" name="newStoreMinCust" min="1" step="1"><br>
+          <span>Maximum Customers Per Hour</span>
+          <input type="number" name="newStoreMaxCust" min="1" step="1"><br>
+          <span>Average Cookies Sold Per Hour</span>
+          <input type="number" name="newStoreAvgCookie" min="1" step=".1"><br>
+          <br>
+          <input class="button" type="button" value="Add New Store" onclick="addNewStore()">
+        </fieldset>
+      </form>
+      <!-- TODO: get the edit store form to to work -->
+      <!-- <form name="editStoreForm">
+        <fieldset class="data">
+          <legend>Edit Store Info.</legend>
+          <span>Store Name</span>
+          <input type="text" name="editStoreName"><br>
+          <span>Minimum Customers Per Hour</span>
+          <input type="number" name="editStoreMinCust" min="1" step="1"><br>
+          <span>Maximum Customers Per Hour</span>
+          <input type="number" name="editStoreMaxCust" min="1" step="1"><br>
+          <span>Average Cookies Sold Per Hour</span>
+          <input type="number" name="editStoreAvgCookie" min="1" step=".1"><br>
+          <br>
+          <input class="button" type="button" value="Edit Store Info" onclick="editStore()">
+        </fieldset>
+      </form> -->
+    </section>
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>

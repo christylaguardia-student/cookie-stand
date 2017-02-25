@@ -1,29 +1,66 @@
 body {
   background-color: #fdfbf5;
-  /*margin: auto;*/
+  margin: 0px;
+}
+
+header {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom: 2px solid #B0A994;
+}
+header a {
+  color: #5E4A3A;
+  text-decoration: none;
+}
+
+nav ul {
+  text-align: center;
+  margin: 0px;
+  padding: 10px;
+}
+
+nav li {
+  display: inline;
+  min-width: 40px;
+  padding: 0px 10px;
+}
+
+nav li a {
+  font-family: 'Raleway', 'Georgia', sans-serif;
+  font-size: 18px;
+}
+
+nav li a:hover {
+  color: #9B5C58;
+}
+
+section {
+  padding-left: 20px;
 }
 
 /*Text*/
 
 .bigHead {
-  font-family: 'Lato', 'Georgia', sans-serif;
+  /*font-family: 'Lato', 'Georgia', sans-serif;*/
+  font-family: 'Amatic SC', cursive;
   color: #5E4A3A;
   font-size: 48px;
-  /*margin: 0 auto;*/
-  /*background-color: #5E4A3A;*/
-  /*padding: 20px 10px 5px 10px;*/
-  /*padding: 20px 10px 2px 10px;*/
-  /*border-bottom: 2px solid #9B5C58;*/
 }
 
 h1, h2, h3 {
-  font-family: 'Abel', 'Georgia', sans-serif;
+  /*font-family: 'Abel', 'Georgia', sans-serif;*/
+  /*font-family: 'Amatic SC', cursive;*/
+  font-family: 'Raleway', 'Georgia', sans-serif;
   color: #9B5C58;
+  margin: 0px;
 }
 
 .text {
   color: #1E1910;
-  font-family: 'Lato', 'Georgia', sans-serif;
+  /*font-family: 'Lato', 'Georgia', sans-serif;*/
+  font-family: 'Raleway', 'Georgia', sans-serif;
   font-size: 14px;
 }
 
@@ -83,6 +120,7 @@ th, td {
 
 th {
   text-align: center;
+  color: #5E4A3A;
   background-color: #B0A994;
   border: none;
   font-size: 16px;
@@ -110,11 +148,12 @@ fieldset {
 }
 
 input {
-  /*font-size: 16px;*/
+  font-size: 16px;
   margin: 10px;
 }
 
 /*Button*/
+
 .button {
   padding: 10px;
   min-width: 40px;
