@@ -43,15 +43,12 @@ section {
 /*Text*/
 
 .bigHead {
-  /*font-family: 'Lato', 'Georgia', sans-serif;*/
   font-family: 'Amatic SC', cursive;
   color: #5E4A3A;
   font-size: 48px;
 }
 
 h1, h2, h3 {
-  /*font-family: 'Abel', 'Georgia', sans-serif;*/
-  /*font-family: 'Amatic SC', cursive;*/
   font-family: 'Raleway', 'Georgia', sans-serif;
   color: #9B5C58;
   margin: 0px;
@@ -59,7 +56,6 @@ h1, h2, h3 {
 
 .text {
   color: #1E1910;
-  /*font-family: 'Lato', 'Georgia', sans-serif;*/
   font-family: 'Raleway', 'Georgia', sans-serif;
   font-size: 14px;
 }
