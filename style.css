@@ -104,6 +104,8 @@ h1, h2, h3 {
 /*Table*/
 
 table {
+  margin: 10px auto;
+  width: 800px;
   border: 2px solid #9B5C58;
   border-spacing: 0px;
 }
@@ -116,10 +118,14 @@ th, td {
 
 th {
   text-align: center;
-  color: #5E4A3A;
-  background-color: #B0A994;
+  color: #FFFFFF;
+  background-color: #1E1910;
   border: none;
   font-size: 16px;
+}
+
+tr:nth-of-type(even) {
+  background-color: #F5EEEE;
 }
 
 tr:hover {
@@ -163,4 +169,22 @@ input {
   background-color: #F5EBD1;
   border: 2px solid #9B5C58;
   cursor: pointer;
+}
+
+/*Maps*/
+iframe {
+  /*width="600" height="450" frameborder="0" style="border:0"*/
+  width: 600px;
+  height: 450px;
+  border: none;
+  style: 0;
+}
+
+/*Footer*/
+
+footer {
+  font-family: 'Raleway', 'Georgia', sans-serif;
+  font-size: 80%;
+  text-align: center;
+  padding: 7px 0px 0px 20px;
 }
