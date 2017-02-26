@@ -14,3 +14,5 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 http://stackoverflow.com/questions/4898574/converting-24-hour-time-to-12-hour-time-w-am-pm-using-javascript
 https://www.w3schools.com/css/css_table.asp
 https://developers.google.com/maps/documentation/embed/start
+https://www.w3schools.com/jsref/dom_obj_tablerow.asp
+https://www.w3schools.com/js/js_properties.asp
