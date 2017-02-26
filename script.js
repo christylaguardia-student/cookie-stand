@@ -46,9 +46,39 @@ function store(name, minCust, maxCust, avgCookie) {
 }
 
 function buildTableRow(store) {
-  // create a new row
+  // var newRow = document.createElement("tr");
+  // // assign an id to the row
+  // newRow.setAttribute("id", store);
+  // // add the row to the table
+  // document.getElementById("simulatedSalesData").appendChild(newRow);
+  // // lookup type of
+  // var rowCell1 = document.createElement("td");
+  // var rowNode1 = document.createTextNode(store.name);
+  // newRow.appendChild(newCell1);
+  // rowCell1.appendChild(rowNode1);
+  // document.getElementById("simulatedSalesData").appendChild(rowCell1);
+
+
+
+  // var rowCell2 = document.createElement("td");
+  // var rowNode2 = document.createTextNode(store.minCust);
+  // rowCell2.appendChild(rowNode2);
+  // document.getElementById("simulatedSalesData").appendChild(rowCell2);
+  //
+  // var rowCell3 = document.createElement("td");
+  // var rowNode3 = document.createTextNode(store.maxCust);
+  // rowCell3.appendChild(rowNode3);
+  // document.getElementById("simulatedSalesData").appendChild(rowCell3);
+  //
+  // var rowCell4 = document.createElement("td");
+  // var rowNode4 = document.createTextNode(store.avgCookie);
+  // rowCell4.appendChild(rowNode4);
+  // document.getElementById("simulatedSalesData").appendChild(rowCell4);
+
+
+  // // create a new row
   var newRow = document.createElement("tr");
-  newRow.setAttribute("id", store);
+  // newRow.setAttribute("id", store);  // QUESTION: not sure if this is working
   document.getElementById("simulatedSalesData").appendChild(newRow);
 
   // loop through each property in the object
@@ -59,8 +89,8 @@ function buildTableRow(store) {
       // do this for the string and number properties
       var rowCell = document.createElement("td");
       var rowNode = document.createTextNode(store[property]);
+      newRow.appendChild(rowCell);
       rowCell.appendChild(rowNode);
-      document.getElementById("simulatedSalesData").appendChild(rowCell);
     } else {
       // get the calculated cookie quantities
       var simulationResults = store.simulatedSales();
@@ -69,8 +99,8 @@ function buildTableRow(store) {
       for (var i = 0; i < simulationResults.length; i++) {
         var rowCell = document.createElement("td");
         var rowNode = document.createTextNode(simulationResults[i][2]); // the qty is the 3rd item in the sub-array
+        newRow.appendChild(rowCell);
         rowCell.appendChild(rowNode);
-        document.getElementById("simulatedSalesData").appendChild(rowCell);
       }
     }
   }
@@ -79,12 +109,14 @@ function buildTableRow(store) {
 function buildTable() {
   // add header row
   var headerRow = document.createElement("tr");
+  document.getElementById("simulatedSalesData").appendChild(headerRow); // add row to table
   // loop through headers array and add cell to header row
   for (var i = 0; i < headers.length; i++) {
     var headerCell = document.createElement("th");
     var headerNode = document.createTextNode(headers[i]);
-    headerCell.appendChild(headerNode);
-    document.getElementById("simulatedSalesData").appendChild(headerCell);
+    headerRow.appendChild(headerCell); // add cell to row
+    headerCell.appendChild(headerNode); // add node to cell
+    // document.getElementById("simulatedSalesData").appendChild(headerCell);
   }
   console.log ("headers added");
   // loop through each store in the stores array, and and add row to table
