@@ -18,42 +18,13 @@
         </ul>
       </nav>
     </header>
-    <section>
+    <div id="content">
       <h1>Daily Sales Projection</h1>
       <table class="data" id="simulatedSalesData"></table>
-      <br>
-      <form name="newStoreForm">
-        <fieldset class="data">
-          <legend>Add New Store</legend>
-          <span>Store Name</span>
-          <input type="text" name="newStoreName"><br>
-          <span>Minimum Customers Per Hour</span>
-          <input type="number" name="newStoreMinCust" min="1" step="1"><br>
-          <span>Maximum Customers Per Hour</span>
-          <input type="number" name="newStoreMaxCust" min="1" step="1"><br>
-          <span>Average Cookies Sold Per Hour</span>
-          <input type="number" name="newStoreAvgCookie" min="1" step=".1"><br>
-          <br>
-          <input class="button" type="button" value="Add New Store" onclick="addNewStore()">
-        </fieldset>
-      </form>
-      <!-- TODO: get the edit store form to to work -->
-      <!-- <form name="editStoreForm">
-        <fieldset class="data">
-          <legend>Edit Store Info.</legend>
-          <span>Store Name</span>
-          <input type="text" name="editStoreName"><br>
-          <span>Minimum Customers Per Hour</span>
-          <input type="number" name="editStoreMinCust" min="1" step="1"><br>
-          <span>Maximum Customers Per Hour</span>
-          <input type="number" name="editStoreMaxCust" min="1" step="1"><br>
-          <span>Average Cookies Sold Per Hour</span>
-          <input type="number" name="editStoreAvgCookie" min="1" step=".1"><br>
-          <br>
-          <input class="button" type="button" value="Edit Store Info" onclick="editStore()">
-        </fieldset>
-      </form> -->
-    </section>
+    </div>
+    <footer>
+      Copyright (c) 2017 Chip &amp; Dough's Inc. All Rights Reserved.
+    </footer>
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>

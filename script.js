@@ -1,4 +1,5 @@
 // do this on page load
+var headers = ["Store Name", "Min Cust/Hr", "Max Cust/Hr", "Avg Cookies Sold", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "Total"];
 var stores = [];
 stores.push(new store("Pioneer Square", 17, 88, 5.2));
 stores.push(new store("Portland Airport", 6, 24, 1.2));
@@ -32,12 +33,11 @@ function store(name, minCust, maxCust, avgCookie) {
       var simulatedCookieQty = Math.floor(randomCustPerHour * this.avgCookie);
       // put results in the array
       simulationArray.push([hour, randomCustPerHour, simulatedCookieQty]);
-      // simulationArray.push([hour, randomCustPerHour, simulatedCookieQty]);
       // add to total qty
       simulationTotal += simulatedCookieQty;
     }
       // put the total in the array
-      simulationArray.push(["Total","Total",simulationTotal]);
+      simulationArray.push(["","",simulationTotal]);
       console.log("simulated sales array for " + this.name + ":");
       console.log(simulationArray);
       return simulationArray;
@@ -45,58 +45,39 @@ function store(name, minCust, maxCust, avgCookie) {
   console.log("store object created: " + this.name);
 }
 
-// use this function to add the table tags to store data
-function buildTableRow(store) {
-  // make row for each store
-  var storeRow = "<tr><td class=\"leftColumn\">" + store.name + "</td>";
-  storeRow += "<td>" + store.minCust + "</td>";
-  storeRow += "<td>" + store.maxCust + "</td>";
-  storeRow += "<td>" + store.avgCookie + "</td>";
-  // calculate simulated cookie sales
-  var storeResults = store.simulatedSales();
-  console.log("simulated sales for " + store.name + ": " + storeResults);
-  // loop through each hour and make cell for each calculated qty
-  // for (var i = 2; i < storeResults.length; i += 3) { // the qty is every third item in the array
-  for (var i = 0; i < storeResults.length; i++) {
-    storeRow += "<td>" + storeResults[i][2] + "</td>";
-  }
-  storeRow += "</tr>";
-  // TODO: total = storeResults[18];
-  console.log("created table row for: " + store.name);
-  return storeRow;
-}
-
 function buildTable() {
   // add headers
-  var tableData = "<tr><th rowspan=\"2\">Store Name</th>";
-  tableData += "<th rowspan=\"2\">Min Cust/Hr</th>";
-  tableData += "<th rowspan=\"2\">Max Cust/Hr</th>";
-  tableData += "<th rowspan=\"2\">Avg Cookies Sold/Hr</th>";
-  tableData += "<th colspan=\"9\">Projected Cookies Sold</th></tr>"
-  tableData += "<tr><th>10AM</th><th>11AM</th><th>12PM</th><th>1PM</th><th>2PM</th><th>3PM</th><th>4PM</th><th>5PM</th>";
-  tableData += "<th>Total</th></tr>";
-  // loop through each store and get data
-  for (var i = 0; i < stores.length; i++) {
-    var storeRow = buildTableRow(stores[i]);
-    tableData += storeRow;
+  var headerRow = document.createElement("tr");
+  for (var i = 0; i < headers.length; i++) {
+    var headerCell = document.createElement("th");
+    var headerNode = document.createTextNode(headers[i]);
+    headerCell.appendChild(headerNode);
+    document.getElementById("simulatedSalesData").appendChild(headerCell);
   }
-  // TODO: add the total of all stores
-  // print to page
-  document.getElementById("simulatedSalesData").innerHTML = tableData;
-  console.log("table built!");
-}
 
-function addNewStore() {
-  // get user's input
-  var form = document.forms["newStoreForm"];
-  name = form.elements["newStoreName"].value;
-  minCust = form.elements["newStoreMinCust"].value;
-  maxCust = form.elements["newStoreMaxCust"].value;
-  avgCookie = form.elements["newStoreAvgCookie"].value;
-  // create new store object
-  stores.push(new store(name, minCust, maxCust, avgCookie));
-  console.log("added new store: " + name);
-  // rebuild table with the new store
-  // TODO: probably shoudn't rebuild table, just add the new store
-  buildTable();
+  // loop through each store in the stores array
+  for (var i = 0; i < stores.length; i++) {
+    // make a new row
+    var newRow = document.createElement("tr");
+    // assign an id to the row
+    newRow.setAttribute("id", "store" + i);
+    // add the row to the table
+    document.getElementById("simulatedSalesData").appendChild(newRow);
+    // loop through properties in object
+    for (var property in stores[i]) {
+      if (property !== "simulatedSales") {
+        // make a new cell
+        var newCell = document.createElement("td");
+        var newNode = document.createTextNode(stores[i][property]);
+        // put the property value in the cell
+        newCell.appendChild(newNode);
+        // add the cell to the row
+        document.getElementById("store" + i).appendChild(newCell);
+      } else {
+
+      }
+    }
+    console.log("row built for " + stores[i].name + " with the id: store" + i);
+  }
+  console.log("table built!")
 }
