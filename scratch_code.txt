@@ -118,3 +118,83 @@ function buildTable() {
 //   }
 //   // console.log("row built for " + stores.name + " with the id: store" + i);
 // }
+
+
+
+
+
+
+
+
+
+
+  // var newRow = document.createElement("tr");
+  // // assign an id to the row
+  // newRow.setAttribute("id", store);
+  // // add the row to the table
+  // document.getElementById("simulatedSalesData").appendChild(newRow);
+  // // lookup type of
+  // var rowCell1 = document.createElement("td");
+  // var rowNode1 = document.createTextNode(store.name);
+  // rowCell1.appendChild(rowNode1);
+  // document.getElementById("simulatedSalesData").appendChild(rowCell1);
+  //
+  // var rowCell2 = document.createElement("td");
+  // var rowNode2 = document.createTextNode(store.minCust);
+  // rowCell2.appendChild(rowNode2);
+  // document.getElementById("simulatedSalesData").appendChild(rowCell2);
+  //
+  // var rowCell3 = document.createElement("td");
+  // var rowNode3 = document.createTextNode(store.maxCust);
+  // rowCell3.appendChild(rowNode3);
+  // document.getElementById("simulatedSalesData").appendChild(rowCell3);
+  //
+  // var rowCell4 = document.createElement("td");
+  // var rowNode4 = document.createTextNode(store.avgCookie);
+  // rowCell4.appendChild(rowNode4);
+  // document.getElementById("simulatedSalesData").appendChild(rowCell4);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // add the total
+    // var cell5 = document.createElement("td");
+    // var node5 = document.createTextNode(simulationResults[this.length - 1][2]);
+    // newRow.appendChild(cell5);
+    // cell5.appendChild(node5);
+
+
+
+
+    // loop through each property in the object
+    // for (var property in store) {
+    //   // if (typeof property !== "function") { // QUESTION: why does this always return a string?
+    //   // check which property
+    //   if (property != "simulatedSales") {
+    //     // do this for the string and number properties
+    //     var rowCell = document.createElement("td");
+    //     var rowNode = document.createTextNode(store[property]);
+    //     newRow.appendChild(rowCell);
+    //     rowCell.appendChild(rowNode);
+    //   } else {
+    //     // get the calculated cookie quantities
+    //     var simulationResults = store.simulatedSales();
+
+        // loop through each cookie quantity in the array
+        // for (var i = 0; i < simulationResults.length; i++) {
+        //   var rowCell = document.createElement("td");
+        //   var rowNode = document.createTextNode(simulationResults[i][2]); // the qty is the 3rd item in the sub-array
+        //   newRow.appendChild(rowCell);
+        //   rowCell.appendChild(rowNode);
+        // }
+    //   }
+    // }

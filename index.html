@@ -18,10 +18,28 @@
         </ul>
       </nav>
     </header>
-    <div id="content">
-      <h1>Daily Sales Projection</h1>
+    <h1>Daily Sales Projection</h1>
+    <section>
       <table class="data" id="simulatedSalesData"></table>
-    </div>
+      <input class="button" type="button" value="Recalculate" onclick="recalculate()">
+    </section>
+    <section>
+      <form class="text" name="newStoreForm">
+        <!-- <fieldset class="data"> -->
+          <h2>Add New Store</h2>
+          <span>Store Name</span>
+          <input class="textBox" type="text" name="newStoreName"><br>
+          <span>Minimum Customers Per Hour</span>
+          <input class="numBox" type="number" name="newStoreMinCust" min="1" step="1"><br>
+          <span>Maximum Customers Per Hour</span>
+          <input class="numBox" type="number" name="newStoreMaxCust" min="1" step="1"><br>
+          <span>Average Cookies Sold Per Hour</span>
+          <input class="numBox" type="number" name="newStoreAvgCookie" min="1" step=".1"><br>
+          <br>
+          <input class="button" type="button" value="Add New Store" onclick="addNewStore()">
+        <!-- </fieldset> -->
+      </form>
+    </section>
     <footer>
       Copyright (c) 2017 Chip &amp; Dough's Inc. All Rights Reserved.
     </footer>

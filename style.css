@@ -104,7 +104,8 @@ h1, h2, h3 {
 /*Table*/
 
 table {
-  margin: 10px auto;
+  /*margin: 10px auto;*/
+  margin: 10px;
   width: 800px;
   border: 2px solid #9B5C58;
   border-spacing: 0px;
@@ -152,6 +153,14 @@ fieldset {
 input {
   font-size: 16px;
   margin: 10px;
+}
+
+.textBox {
+  width: 300px;
+}
+
+.numBox {
+  width: 50px;
 }
 
 /*Button*/

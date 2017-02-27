@@ -46,63 +46,44 @@ function store(name, minCust, maxCust, avgCookie) {
 }
 
 function buildTableRow(store) {
-  // var newRow = document.createElement("tr");
-  // // assign an id to the row
-  // newRow.setAttribute("id", store);
-  // // add the row to the table
-  // document.getElementById("simulatedSalesData").appendChild(newRow);
-  // // lookup type of
-  // var rowCell1 = document.createElement("td");
-  // var rowNode1 = document.createTextNode(store.name);
-  // newRow.appendChild(newCell1);
-  // rowCell1.appendChild(rowNode1);
-  // document.getElementById("simulatedSalesData").appendChild(rowCell1);
-
-
-
-  // var rowCell2 = document.createElement("td");
-  // var rowNode2 = document.createTextNode(store.minCust);
-  // rowCell2.appendChild(rowNode2);
-  // document.getElementById("simulatedSalesData").appendChild(rowCell2);
-  //
-  // var rowCell3 = document.createElement("td");
-  // var rowNode3 = document.createTextNode(store.maxCust);
-  // rowCell3.appendChild(rowNode3);
-  // document.getElementById("simulatedSalesData").appendChild(rowCell3);
-  //
-  // var rowCell4 = document.createElement("td");
-  // var rowNode4 = document.createTextNode(store.avgCookie);
-  // rowCell4.appendChild(rowNode4);
-  // document.getElementById("simulatedSalesData").appendChild(rowCell4);
-
-
-  // // create a new row
+  // create a new row
   var newRow = document.createElement("tr");
-  // newRow.setAttribute("id", store);  // QUESTION: not sure if this is working
+  // newRow.setAttribute("id", store.name);
   document.getElementById("simulatedSalesData").appendChild(newRow);
 
-  // loop through each property in the object
-  for (var property in store) {
-    // if (typeof property !== "function") { // QUESTION: why does this always return a string?
-    // check which property
-    if (property != "simulatedSales") {
-      // do this for the string and number properties
-      var rowCell = document.createElement("td");
-      var rowNode = document.createTextNode(store[property]);
-      newRow.appendChild(rowCell);
-      rowCell.appendChild(rowNode);
-    } else {
-      // get the calculated cookie quantities
-      var simulationResults = store.simulatedSales();
+  // add store name
+  var cell1 = document.createElement("td");
+  cell1.setAttribute("class", "leftColumn");
+  var node1 = document.createTextNode(store.name);
+  newRow.appendChild(cell1);
+  cell1.appendChild(node1);
 
-      // loop through each cookie quantity in the array
-      for (var i = 0; i < simulationResults.length; i++) {
-        var rowCell = document.createElement("td");
-        var rowNode = document.createTextNode(simulationResults[i][2]); // the qty is the 3rd item in the sub-array
-        newRow.appendChild(rowCell);
-        rowCell.appendChild(rowNode);
-      }
-    }
+  // add store min customers
+  var cell2 = document.createElement("td");
+  var node2 = document.createTextNode(store.minCust);
+  newRow.appendChild(cell2);
+  cell2.appendChild(node2);
+
+  // add store max customers
+  var cell3 = document.createElement("td");
+  var node3 = document.createTextNode(store.maxCust);
+  newRow.appendChild(cell3);
+  cell3.appendChild(node3);
+
+  // add store avg cookies
+  var cell4 = document.createElement("td");
+  var node4 = document.createTextNode(store.avgCookie);
+  newRow.appendChild(cell4);
+  cell4.appendChild(node4);
+
+  // get the calculated cookie quantities
+  var simulationResults = store.simulatedSales();
+  // add simulated sales by looping through each cookie quantity in the array
+  for (var i = 0; i < simulationResults.length; i++) { // skip the last item in the array
+    var cell = document.createElement("td");
+    var node = document.createTextNode(simulationResults[i][2]); // the qty is the 3rd item in the sub-array
+    newRow.appendChild(cell);
+    cell.appendChild(node);
   }
 }
 
@@ -124,4 +105,33 @@ function buildTable() {
     buildTableRow(stores[i]);
   }
   console.log("table built!");
+}
+
+function addNewStore() {
+  // get user's input
+  var form = document.forms["newStoreForm"];
+  name = form.elements["newStoreName"].value;
+  minCust = form.elements["newStoreMinCust"].value;
+  maxCust = form.elements["newStoreMaxCust"].value;
+  avgCookie = form.elements["newStoreAvgCookie"].value;
+  // create new store object
+  var newStore = new store(name, minCust, maxCust, avgCookie);
+  // add to the array
+  stores.push(newStore);
+  // add to the table
+  buildTableRow(newStore);
+  console.log("added new store: " + name);
+  // clear the form
+  form.reset();
+}
+
+function recalculate() {
+  // remove all rows
+  var table = document.getElementById("simulatedSalesData");
+  var rows = table.getElementsByTagName("tr");
+  while (rows.length > 0) {
+    table.removeChild(rows[0]);
+  }
+  // make new table rows
+  buildTable();
 }
