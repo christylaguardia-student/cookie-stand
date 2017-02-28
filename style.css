@@ -38,6 +38,7 @@ nav li a:hover {
 
 section {
   padding-left: 20px;
+  /*display: inline-block;*/
 }
 
 /*Text*/
@@ -145,6 +146,10 @@ tr:hover {
 
 /*Form*/
 
+form {
+  /*display: block;*/
+}
+
 fieldset {
   float: left;
   text-align: right;
@@ -212,4 +217,5 @@ footer {
   font-size: 80%;
   text-align: center;
   padding: 7px 0px 0px 20px;
+  display: inline-block;
 }
