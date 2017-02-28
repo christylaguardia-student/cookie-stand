@@ -46,12 +46,13 @@ section {
   font-family: 'Amatic SC', cursive;
   color: #5E4A3A;
   font-size: 48px;
+  margin: 0;
 }
 
 h1, h2, h3 {
   font-family: 'Raleway', 'Georgia', sans-serif;
   color: #9B5C58;
-  margin: 0px;
+  margin: 10px;
 }
 
 .text {
@@ -148,6 +149,12 @@ fieldset {
   float: left;
   text-align: right;
   border: 2px solid #9B5C58;
+  display: inline-block;
+}
+
+legend {
+  text-align: left;
+  font-size: 18px;
 }
 
 input {
@@ -187,6 +194,15 @@ iframe {
   height: 450px;
   border: none;
   style: 0;
+}
+
+/*Pictures*/
+
+.picture {
+  display: inline-block;
+  height: 200px;
+  width: 300px;
+  margin: 10px;
 }
 
 /*Footer*/
