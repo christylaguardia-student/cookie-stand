@@ -1,12 +1,15 @@
 // do this on page load
 var hours = ["10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 var stores = [];
+var total = 0;
+
 stores.push(new Store("Pioneer Square", 17, 88, 5.2));
 stores.push(new Store("Portland Airport", 6, 24, 1.2));
 stores.push(new Store("Washington Square", 11, 38, 1.9));
 stores.push(new Store("Sellwood", 20, 48, 3.3));
 stores.push(new Store("Pearl District", 3, 24, 2.6));
 console.log(stores);
+
 buildTable();
 
 // create generic object
@@ -50,6 +53,8 @@ function buildTableRow(store) {
   tableRow.appendChild(tableData);
   // get projected sales data
   var simulationResults = store.simulatedSales();
+  total += simulationResults[simulationResults.length - 1]; // get last item
+  console.log("all store total: " + total);
   // add projected sales data to row
   for (var i = 0; i < simulationResults.length; i++) {
     var tableCalcData = document.createElement("td");
@@ -82,7 +87,20 @@ function buildTable() {
   for (var i = 0; i < stores.length; i++) {
     table.appendChild(buildTableRow(stores[i]));
   }
-  console.log("table built!");
+  buildTotalRow();
+}
+
+function buildTotalRow() {
+  var table = document.getElementById("simulatedSalesData");
+  var tableRow = document.createElement("tr");
+  var tableData = document.createElement("td");
+  tableData.setAttribute("colspan", hours.length + 1);
+  tableData.textContent = "Total Cookies Sold";
+  tableRow.appendChild(tableData);
+  var tableData2 = document.createElement("td");
+  tableData2.textContent = total;
+  tableRow.appendChild(tableData2);
+  table.appendChild(tableRow);
 }
 
 function addNewStore() {
@@ -92,20 +110,53 @@ function addNewStore() {
   var userMinCust = form.elements["newStoreMinCust"].value;
   var userMaxCust = form.elements["newStoreMaxCust"].value;
   var userAvgCookie = form.elements["newStoreAvgCookie"].value;
-  // create new store object
-  var newStore = new Store(userStoreName, userMinCust, userMaxCust, userAvgCookie);
-  // add to the stores array
-  stores.push(newStore);
-  // add to the table
-  var table = document.getElementById("simulatedSalesData");
-  table.appendChild(buildTableRow(newStore));
-  console.log("added new store: " + name);
-  console.log(newStore);
-  // clear the form
-  form.reset();
+
+  // check if form is filled out completely
+  if ((userStoreName === "") || (userMinCust === "") || (userMaxCust === "") || (userAvgCookie === "")) {
+    console.log("form incomplete");
+    if (userStoreName === "") {
+      document.getElementById("errorStoreName").style.visibility = "visible";
+    } else {
+      document.getElementById("errorStoreName").style.visibility = "hidden";
+    }
+    if (userMinCust === "") {
+      document.getElementById("errorMinCust").style.visibility = "visible";
+    } else {
+      document.getElementById("errorMinCust").style.visibility = "hidden";
+    }
+    if (userMaxCust === "") {
+      document.getElementById("errorMaxCust").style.visibility = "visible";
+    } else {
+      document.getElementById("errorMaxCust").style.visibility = "hidden";
+    }
+    if (userAvgCookie === "") {
+      document.getElementById("errorAvgCookie").style.visibility = "visible";
+    } else {
+      document.getElementById("errorAvgCookie").style.visibility = "hidden";
+    }
+  } else {
+    document.getElementById("errorStoreName").style.visibility = "hidden";
+    document.getElementById("errorMinCust").style.visibility = "hidden";
+    document.getElementById("errorMaxCust").style.visibility = "hidden";
+    document.getElementById("errorAvgCookie").style.visibility = "hidden";
+
+    // create new store object
+    var newStore = new Store(userStoreName, userMinCust, userMaxCust, userAvgCookie);
+    // add to the stores array
+    stores.push(newStore);
+    // add to the table
+    var table = document.getElementById("simulatedSalesData");
+    table.appendChild(buildTableRow(newStore));
+    buildTotalRow();
+    console.log("added new store: " + name);
+    console.log(newStore);
+    // clear the form
+    form.reset();
+  }
 }
 
 function recalculate() {
+  total = 0;
   // remove all rows
   var table = document.getElementById("simulatedSalesData");
   var rows = table.getElementsByTagName("tr");
@@ -114,4 +165,9 @@ function recalculate() {
   }
   // make new table rows
   buildTable();
+}
+
+function getTotal() {
+  var table = document.getElementById("simulatedSalesData");
+  var rows = table.getElementsByTagName("tr");
 }

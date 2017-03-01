@@ -18,8 +18,8 @@
         </ul>
       </nav>
     </header>
-    <h1>Daily Sales Projection</h1>
     <section>
+      <h2>Daily Sales Projection</h2>
       <table class="data" id="simulatedSalesData"></table>
       <input class="button" type="button" value="Recalculate" onclick="recalculate()">
     </section>
@@ -28,13 +28,13 @@
         <fieldset class="data">
           <legend>Add New Store</legend>
           <span>Store Name</span>
-          <input class="textBox" type="text" name="newStoreName"><br>
+          <input class="textBox" type="text" name="newStoreName"><img id="errorStoreName" class="error" src="images/error_icon.png"><br>
           <span>Minimum Customers Per Hour</span>
-          <input class="numBox" type="number" name="newStoreMinCust" min="1" step="1"><br>
+          <input class="numBox" type="number" name="newStoreMinCust" min="1" step="1"><img id="errorMinCust" class="error" src="images/error_icon.png"><br>
           <span>Maximum Customers Per Hour</span>
-          <input class="numBox" type="number" name="newStoreMaxCust" min="1" step="1"><br>
+          <input class="numBox" type="number" name="newStoreMaxCust" min="1" step="1"><img id="errorMaxCust" class="error" src="images/error_icon.png"><br>
           <span>Average Cookies Sold Per Hour</span>
-          <input class="numBox" type="number" name="newStoreAvgCookie" min="1" step=".1"><br>
+          <input class="numBox" type="number" name="newStoreAvgCookie" min="1" step=".1"><img id="errorAvgCookie" class="error" src="images/error_icon.png"><br>
           <br>
           <input class="button" type="button" value="Add New Store" onclick="addNewStore()">
         </fieldset>
