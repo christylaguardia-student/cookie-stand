@@ -137,6 +137,13 @@ tr:hover {
   /*color: #9B5C58;*/
 }
 
+tr:last-child {
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color: #1E1910;
+  border-bottom: none;
+}
+
 .leftColumn {
   text-align: left;
 }
@@ -161,6 +168,9 @@ fieldset {
 legend {
   text-align: left;
   font-size: 18px;
+  color: #9B5C58;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 input {

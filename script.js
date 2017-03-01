@@ -54,7 +54,7 @@ function buildTableRow(store) {
   // get projected sales data
   var simulationResults = store.simulatedSales();
   total += simulationResults[simulationResults.length - 1]; // get last item
-  console.log("all store total: " + total);
+  // console.log("all store total: " + total);
   // add projected sales data to row
   for (var i = 0; i < simulationResults.length; i++) {
     var tableCalcData = document.createElement("td");
@@ -142,14 +142,19 @@ function addNewStore() {
 
     // create new store object
     var newStore = new Store(userStoreName, userMinCust, userMaxCust, userAvgCookie);
-    // add to the stores array
     stores.push(newStore);
-    // add to the table
+
     var table = document.getElementById("simulatedSalesData");
-    table.appendChild(buildTableRow(newStore));
-    buildTotalRow();
+    // var rows = table.getElementsByTagName("tr");
+    // var rowCount = rows.length;
+    // table.removeChild(rowCount); //remove last row, this is the total row
+
+    table.appendChild(buildTableRow(newStore)); // add the store row
+    buildTotalRow(); // add the new total row
+
     console.log("added new store: " + name);
     console.log(newStore);
+
     // clear the form
     form.reset();
   }
@@ -167,7 +172,7 @@ function recalculate() {
   buildTable();
 }
 
-function getTotal() {
-  var table = document.getElementById("simulatedSalesData");
-  var rows = table.getElementsByTagName("tr");
-}
+// function getTotal() {
+//   var table = document.getElementById("simulatedSalesData");
+//   var rows = table.getElementsByTagName("tr");
+// }
