@@ -93,6 +93,7 @@ function buildTable() {
 function buildTotalRow() {
   var table = document.getElementById("simulatedSalesData");
   var tableRow = document.createElement("tr");
+  tableRow.setAttribute("id", "totalRow");
   var tableData = document.createElement("td");
   tableData.setAttribute("colspan", hours.length + 1);
   tableData.textContent = "Total Cookies Sold";
@@ -147,7 +148,15 @@ function addNewStore() {
     var table = document.getElementById("simulatedSalesData");
     // var rows = table.getElementsByTagName("tr");
     // var rowCount = rows.length;
+    // document.getElementById("totalRow").removeChild();÷
     // table.removeChild(rowCount); //remove last row, this is the total row
+
+    var oldTotalRow = document.getElementById("totalRow");
+    table.removeChild(oldTotalRow);
+    // var row = document.getElementById(rowid);
+    // row.parentNode.removeChild(row);
+    // table.removeChild(oldTotalRow);
+
 
     table.appendChild(buildTableRow(newStore)); // add the store row
     buildTotalRow(); // add the new total row
