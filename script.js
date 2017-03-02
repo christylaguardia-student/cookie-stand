@@ -2,14 +2,12 @@
 var hours = ["10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 var stores = [];
 var total = 0;
-
 stores.push(new Store("Pioneer Square", 17, 88, 5.2));
 stores.push(new Store("Portland Airport", 6, 24, 1.2));
 stores.push(new Store("Washington Square", 11, 38, 1.9));
 stores.push(new Store("Sellwood", 20, 48, 3.3));
 stores.push(new Store("Pearl District", 3, 24, 2.6));
 console.log(stores);
-
 buildTable();
 
 // create generic object
@@ -64,6 +62,14 @@ function buildTableRow(store) {
   return tableRow;
 }
 
+function editStore(storeName) {
+  alert("OMG! it worked for: " + storeName);
+}
+
+function removeStore() {
+  alert("OMG! it worked!");
+}
+
 function buildTable() {
   var table = document.getElementById("simulatedSalesData");
   // add headers
@@ -78,7 +84,7 @@ function buildTable() {
     // console.log(hours[i]);
   }
   tableHeader = document.createElement("th");
-  tableHeader.textContent = "Total";
+  tableHeader.textContent = "Day Total";
   tableRow.appendChild(tableHeader);
   table.appendChild(tableRow);
   // console.log ("headers added");
@@ -96,7 +102,7 @@ function buildTotalRow() {
   tableRow.setAttribute("id", "totalRow");
   var tableData = document.createElement("td");
   tableData.setAttribute("colspan", hours.length + 1);
-  tableData.textContent = "Total Cookies Sold";
+  tableData.textContent = "All Stores Total";
   tableRow.appendChild(tableData);
   var tableData2 = document.createElement("td");
   tableData2.textContent = total;
@@ -136,34 +142,24 @@ function addNewStore() {
       document.getElementById("errorAvgCookie").style.visibility = "hidden";
     }
   } else {
+    // show x's if already hidden
     document.getElementById("errorStoreName").style.visibility = "hidden";
     document.getElementById("errorMinCust").style.visibility = "hidden";
     document.getElementById("errorMaxCust").style.visibility = "hidden";
     document.getElementById("errorAvgCookie").style.visibility = "hidden";
-
     // create new store object
     var newStore = new Store(userStoreName, userMinCust, userMaxCust, userAvgCookie);
     stores.push(newStore);
-
+    // remove the old total row
     var table = document.getElementById("simulatedSalesData");
-    // var rows = table.getElementsByTagName("tr");
-    // var rowCount = rows.length;
-    // document.getElementById("totalRow").removeChild();÷
-    // table.removeChild(rowCount); //remove last row, this is the total row
-
     var oldTotalRow = document.getElementById("totalRow");
     table.removeChild(oldTotalRow);
-    // var row = document.getElementById(rowid);
-    // row.parentNode.removeChild(row);
-    // table.removeChild(oldTotalRow);
-
-
-    table.appendChild(buildTableRow(newStore)); // add the store row
-    buildTotalRow(); // add the new total row
-
-    console.log("added new store: " + name);
-    console.log(newStore);
-
+    // add the store row
+    table.appendChild(buildTableRow(newStore));
+    // add the new total row
+    buildTotalRow();
+    console.log("added new store for: " + userStoreName);
+    // console.log(newStore);
     // clear the form
     form.reset();
   }
@@ -177,11 +173,5 @@ function recalculate() {
   while (rows.length > 0) {
     table.removeChild(rows[0]);
   }
-  // make new table rows
   buildTable();
 }
-
-// function getTotal() {
-//   var table = document.getElementById("simulatedSalesData");
-//   var rows = table.getElementsByTagName("tr");
-// }

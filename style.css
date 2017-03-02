@@ -134,7 +134,6 @@ tr:nth-of-type(even) {
 
 tr:hover {
   background-color: #F5EBD1;
-  /*color: #9B5C58;*/
 }
 
 tr:last-child {
@@ -155,12 +154,7 @@ tr:last-child {
 
 /*Form*/
 
-form {
-  /*display: block;*/
-}
-
 fieldset {
-  /*float: left;*/
   text-align: right;
   border: 2px solid #9B5C58;
   display: inline-block;
@@ -200,11 +194,19 @@ input {
   border: 2px solid #1E1910;
 }
 
-.button:hover {
+.button:hover, .buttonSmall:hover {
   color: #9B5C58;
   background-color: #F5EBD1;
   border: 2px solid #9B5C58;
   cursor: pointer;
+}
+
+.buttonSmall {
+  font-size: 12px;
+  padding: 2px;
+  color: #FFFFFF;
+  background-color: #1E1910;
+  border: 2px solid #1E1910;
 }
 
 /*Maps*/

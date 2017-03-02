@@ -198,3 +198,29 @@ function buildTable() {
         // }
     //   }
     // }
+
+
+
+
+
+
+
+
+
+      var editButtonCell = document.createElement("td");
+      var editButton = document.createElement("input");
+      editButton.setAttribute("class", "buttonSmall");
+      editButton.setAttribute("type", "button");
+      editButton.setAttribute("value", "Edit");
+      editButton.setAttribute("onclick", "editStore(" + store.name + ")");
+      editButtonCell.appendChild(editButton);
+      tableRow.appendChild(editButtonCell);
+
+      var removeButtonCell = document.createElement("td");
+      var removeButton = document.createElement("input");
+      removeButton.setAttribute("class", "buttonSmall");
+      removeButton.setAttribute("type", "button");
+      removeButton.setAttribute("value", "Remove");
+      removeButton.setAttribute("onclick", "removeStore()");
+      removeButtonCell.appendChild(removeButton);
+      tableRow.appendChild(removeButtonCell);
