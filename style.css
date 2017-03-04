@@ -38,7 +38,9 @@ nav li a:hover {
 
 section {
   padding-left: 20px;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
+  margin: 0 auto;
+  width: 840px;
   /*display: inline-block;*/
 }
 
@@ -222,7 +224,7 @@ iframe {
 
 .picture {
   display: inline-block;
-  height: 200px;
+  /*height: 200px;*/
   width: 300px;
   margin: 10px;
 }
@@ -230,6 +232,27 @@ iframe {
 .error {
   visibility: hidden;
   vertical-align: middle;
+}
+
+.rightPicture {
+  float: right;
+}
+
+.leftPicture {
+  float: left;
+}
+
+figure {
+  display: inline-block;
+  text-align: center;
+  font-family: 'Raleway', 'Georgia', sans-serif;
+  font-size: 18px;
+  color: #B0A994;
+  background-color: #5E4A3A;
+}
+
+figcaption {
+  padding-bottom: 15px;
 }
 
 /*Footer*/
