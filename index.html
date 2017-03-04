@@ -12,7 +12,6 @@
         <ul>
           <li><a href="cookies.html">Cookies</a></li>
           <li><a href="locations.html">Locations</a></li>
-          <li><a href="store.html">Shop</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="styleguide.html" target="_blank">Style Guide</a></li>
         </ul>
@@ -21,9 +20,23 @@
     <section>
       <h2>Daily Sales Projection</h2>
       <table class="data" id="simulatedSalesData"></table>
-      <input class="button" type="button" value="Recalculate" onclick="recalculate()">
-    </section>
-    <section>
+      <input class="button" type="button" value="Recalculate" onclick="recalculate()"><br>
+      <form class="text" name="editStoreForm">
+        <fieldset class="data">
+          <legend>Change Store Info.</legend>
+          <span>Store Name</span>
+          <input class="textBox" type="text" name="editStoreName"><img id="errorStoreName" class="error" src="images/error_icon.png"><br>
+          <span>Minimum Customers Per Hour</span>
+          <input class="numBox" type="number" name="editStoreMinCust" min="1" step="1"><img id="errorMinCust" class="error" src="images/error_icon.png"><br>
+          <span>Maximum Customers Per Hour</span>
+          <input class="numBox" type="number" name="editStoreMaxCust" min="1" step="1"><img id="errorMaxCust" class="error" src="images/error_icon.png"><br>
+          <span>Average Cookies Sold Per Hour</span>
+          <input class="numBox" type="number" name="editStoreAvgCookie" min="1" step=".1"><img id="errorAvgCookie" class="error" src="images/error_icon.png"><br>
+          <br>
+          <input class="button" type="button" value="Remove Store" onclick="deleteStore()">
+          <input class="button" type="button" value="Update Sales" onclick="editStore()">
+        </fieldset>
+      </form>
       <form class="text" name="newStoreForm">
         <fieldset class="data">
           <legend>Add New Store</legend>
