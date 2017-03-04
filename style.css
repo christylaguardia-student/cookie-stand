@@ -9,6 +9,10 @@ header {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom: 2px solid #B0A994;
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  top: 0px;
 }
 header a {
   color: #5E4A3A;
@@ -37,9 +41,10 @@ nav li a:hover {
 }
 
 section {
+  margin: 150px auto 50px auto;
   padding-left: 20px;
   /*margin-bottom: 20px;*/
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   width: 840px;
   /*display: inline-block;*/
 }
@@ -56,7 +61,7 @@ section {
 h1, h2, h3 {
   font-family: 'Raleway', 'Georgia', sans-serif;
   color: #9B5C58;
-  margin: 10px;
+  /*margin: 10px;*/
 }
 
 .text {
@@ -156,6 +161,12 @@ tr:last-child {
 
 /*Form*/
 
+form {
+  /*width: 200px;*/
+  /*display: block;*/
+  margin: 40px auto;
+}
+
 fieldset {
   text-align: right;
   border: 2px solid #9B5C58;
@@ -247,7 +258,7 @@ figure {
   text-align: center;
   font-family: 'Raleway', 'Georgia', sans-serif;
   font-size: 18px;
-  color: #B0A994;
+  color: #FFFFFF;
   background-color: #5E4A3A;
 }
 
@@ -261,6 +272,8 @@ footer {
   font-family: 'Raleway', 'Georgia', sans-serif;
   font-size: 80%;
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
   /*padding: 10px 0px 0px 20px;*/
   /*display: inline-block;*/
 }
