@@ -13,14 +13,10 @@ buildTable();
 // create generic object
 function Store(name, minCust, maxCust, avgCookie) {
   this.name = name;
-  this.minCust = minCust; // per hour
-  this.maxCust = maxCust; // per hour
-  this.avgCookie = avgCookie; // per hour
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookie = avgCookie;
   this.simulatedSales = function() {
-    // console.log("...doing calculations for " + this.name + "...");
-    // console.log("min: " + this.minCust);
-    // console.log("max: " + this.maxCust);
-    // console.log("avg: " + this.avgCookie);
     var simulationArray = [];
     var simulationTotal = 0;
     for (var i = 0; i < hours.length; i++) {
@@ -32,11 +28,8 @@ function Store(name, minCust, maxCust, avgCookie) {
       var simulatedCookieQty = Math.floor(randomCustPerHour * this.avgCookie);
       simulationArray.push(simulatedCookieQty);
       simulationTotal += simulatedCookieQty;
-      // console.log("random cust: " + randomCustPerHour);
-      // console.log("cookie qty: " + simulatedCookieQty);
     }
     simulationArray.push(simulationTotal);
-    // console.log("total: " + simulationTotal);
     return simulationArray;
   };
   console.log("store object created: " + this.name);
@@ -44,6 +37,8 @@ function Store(name, minCust, maxCust, avgCookie) {
 
 function buildTableRow(store) {
   var tableRow = document.createElement("tr");
+  // add on click event
+  tableRow.addEventListener("click", function(){ populateEditForm(store); });
   var tableData = document.createElement("td");
   // add store name to row
   tableData.setAttribute("class", "leftColumn");
@@ -60,14 +55,6 @@ function buildTableRow(store) {
     tableRow.appendChild(tableCalcData);
   }
   return tableRow;
-}
-
-function editStore(storeName) {
-  alert("OMG! it worked for: " + storeName);
-}
-
-function removeStore() {
-  alert("OMG! it worked!");
 }
 
 function buildTable() {
@@ -108,6 +95,23 @@ function buildTotalRow() {
   tableData2.textContent = total;
   tableRow.appendChild(tableData2);
   table.appendChild(tableRow);
+}
+
+function populateEditForm(store) {
+  // alert("you clicked on " + store.name);
+  var form = document.forms["editStoreForm"];
+  form.elements["editStoreName"].value = store.name;
+  form.elements["editStoreMinCust"].value = store.minCust;
+  form.elements["editStoreMaxCust"].value = store.maxCust;
+  form.elements["editStoreAvgCookie"].value = store.avgCookie;
+}
+
+function editStore() {
+  alert("do the stuff");
+}
+
+function deleteStore() {
+  alert("do the stuff");
 }
 
 function addNewStore() {
