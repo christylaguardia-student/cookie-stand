@@ -20,11 +20,7 @@ function Store(name, minCust, maxCust, avgCookie) {
     var simulationArray = [];
     var simulationTotal = 0;
     for (var i = 0; i < hours.length; i++) {
-      var randomCustPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-      // prevent 0 customers and 0 quantities
-      if (randomCustPerHour === 0) {
-        randomCustPerHour = 1;
-      }
+      var randomCustPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
       var simulatedCookieQty = Math.floor(randomCustPerHour * this.avgCookie);
       simulationArray.push(simulatedCookieQty);
       simulationTotal += simulatedCookieQty;
@@ -38,7 +34,7 @@ function Store(name, minCust, maxCust, avgCookie) {
 function buildTableRow(store) {
   var tableRow = document.createElement("tr");
   // add on click event
-  tableRow.addEventListener("click", function(){ populateEditForm(store); });
+  tableRow.addEventListener("click", function(){ preFillEditForm(store); });
   var tableData = document.createElement("td");
   // add store name to row
   tableData.setAttribute("class", "leftColumn");
@@ -47,7 +43,6 @@ function buildTableRow(store) {
   // get projected sales data
   var simulationResults = store.simulatedSales();
   total += simulationResults[simulationResults.length - 1]; // get last item
-  // console.log("all store total: " + total);
   // add projected sales data to row
   for (var i = 0; i < simulationResults.length; i++) {
     var tableCalcData = document.createElement("td");
@@ -97,21 +92,45 @@ function buildTotalRow() {
   table.appendChild(tableRow);
 }
 
-function populateEditForm(store) {
+function preFillEditForm(store) {
   // alert("you clicked on " + store.name);
+  // fill in the form
   var form = document.forms["editStoreForm"];
   form.elements["editStoreName"].value = store.name;
   form.elements["editStoreMinCust"].value = store.minCust;
   form.elements["editStoreMaxCust"].value = store.maxCust;
   form.elements["editStoreAvgCookie"].value = store.avgCookie;
+  // set the button events
+  form.elements["deleteStoreButton"].addEventListener("click", function(){ deleteStore(store); });
+  // form.elements["editStoreButton"].addEventListener("click", function(){ editStore(store); });
+  // form.elements["editStoreButton"].setAttribute("onclick", "editStore()", store);
+  // form.elements["editStoreButton"].onclick = editStore(store);
+  // form.elements["deleteStoreButton"].onclick = deleteStore(store);
 }
 
-function editStore() {
-  alert("do the stuff");
+function editStore(store) {
+  var form = document.forms["editStoreForm"];
+  var userStoreName = form.elements["editStoreName"].value;
+  var userMinCust = parseInt(form.elements["editStoreMinCust"].value);
+  var userMaxCust = parseInt(form.elements["editStoreMaxCust"].value);
+  var userAvgCookie = parseInt(form.elements["editStoreAvgCookie"].value);
+
+  store.name = userStoreName;
+  store.minCust = userMinCust;
+  store.maxCust = userMaxCust;
+  store.avgCookie = userAvgCookie;
+
+  var table = document.getElementById("simulatedSalesData");
+  var oldTotalRow = document.getElementById("totalRow");
+  table.removeChild(oldTotalRow);
+  table.appendChild(buildTableRow(store));
+  buildTotalRow();
+
 }
 
-function deleteStore() {
-  alert("do the stuff");
+function deleteStore(store) {
+  var index = stores.indexOf(store);
+  console.log(index);
 }
 
 function addNewStore() {

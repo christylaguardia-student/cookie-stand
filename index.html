@@ -13,7 +13,7 @@
           <li><a href="cookies.html">Cookies</a></li>
           <li><a href="locations.html">Locations</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="styleguide.html" target="_blank">Style Guide</a></li>
+          <li><a href="styleguide.html">Style Guide</a></li>
         </ul>
       </nav>
     </header>
@@ -25,29 +25,29 @@
         <fieldset class="data">
           <legend>Change Store Info.</legend>
           <span>Store Name</span>
-          <input class="textBox" type="text" name="editStoreName"><img id="errorStoreName" class="error" src="images/error_icon.png"><br>
+          <input class="textBox" type="text" name="editStoreName"><br>
           <span>Minimum Customers Per Hour</span>
-          <input class="numBox" type="number" name="editStoreMinCust" min="1" step="1"><img id="errorMinCust" class="error" src="images/error_icon.png"><br>
+          <input class="numBox" type="number" name="editStoreMinCust" min="1" step="1"><br>
           <span>Maximum Customers Per Hour</span>
-          <input class="numBox" type="number" name="editStoreMaxCust" min="1" step="1"><img id="errorMaxCust" class="error" src="images/error_icon.png"><br>
+          <input class="numBox" type="number" name="editStoreMaxCust" min="1" step="1"><br>
           <span>Average Cookies Sold Per Hour</span>
-          <input class="numBox" type="number" name="editStoreAvgCookie" min="1" step=".1"><img id="errorAvgCookie" class="error" src="images/error_icon.png"><br>
+          <input class="numBox" type="number" name="editStoreAvgCookie" min="1" step=".1"><br>
           <br>
-          <input class="button" type="button" value="Remove Store" onclick="deleteStore()">
-          <input class="button" type="button" value="Update Sales" onclick="editStore()">
+          <input id="deleteStoreButton" class="button" type="button" value="Remove Store">
+          <input id="editStoreButton" class="button" type="button" value="Update Store">
         </fieldset>
       </form>
       <form class="text" name="newStoreForm">
         <fieldset class="data">
           <legend>Add New Store</legend>
           <span>Store Name</span>
-          <input class="textBox" type="text" name="newStoreName"><img id="errorStoreName" class="error" src="images/error_icon.png"><br>
+          <input class="textBox" type="text" name="newStoreName"><br>
           <span>Minimum Customers Per Hour</span>
-          <input class="numBox" type="number" name="newStoreMinCust" min="1" step="1"><img id="errorMinCust" class="error" src="images/error_icon.png"><br>
+          <input class="numBox" type="number" name="newStoreMinCust" min="1" step="1"><br>
           <span>Maximum Customers Per Hour</span>
-          <input class="numBox" type="number" name="newStoreMaxCust" min="1" step="1"><img id="errorMaxCust" class="error" src="images/error_icon.png"><br>
+          <input class="numBox" type="number" name="newStoreMaxCust" min="1" step="1"><br>
           <span>Average Cookies Sold Per Hour</span>
-          <input class="numBox" type="number" name="newStoreAvgCookie" min="1" step=".1"><img id="errorAvgCookie" class="error" src="images/error_icon.png"><br>
+          <input class="numBox" type="number" name="newStoreAvgCookie" min="1" step=".1"><br>
           <br>
           <input class="button" type="button" value="Add New Store" onclick="addNewStore()">
         </fieldset>

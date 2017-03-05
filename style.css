@@ -43,10 +43,7 @@ nav li a:hover {
 section {
   margin: 150px auto 50px auto;
   padding-left: 20px;
-  /*margin-bottom: 20px;*/
-  /*margin: 0 auto;*/
   width: 840px;
-  /*display: inline-block;*/
 }
 
 /*Text*/
@@ -189,6 +186,10 @@ input {
   padding: 5px;
 }
 
+input[type=text]:focus {
+  background-color: #F5EBD1;
+}
+
 .textBox {
   width: 300px;
 }
@@ -207,19 +208,11 @@ input {
   border: 2px solid #1E1910;
 }
 
-.button:hover, .buttonSmall:hover {
+.button:hover {
   color: #9B5C58;
   background-color: #F5EBD1;
   border: 2px solid #9B5C58;
   cursor: pointer;
-}
-
-.buttonSmall {
-  font-size: 12px;
-  padding: 2px;
-  color: #FFFFFF;
-  background-color: #1E1910;
-  border: 2px solid #1E1910;
 }
 
 /*Maps*/

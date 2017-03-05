@@ -16,3 +16,4 @@ https://www.w3schools.com/css/css_table.asp
 https://developers.google.com/maps/documentation/embed/start
 https://www.w3schools.com/jsref/dom_obj_tablerow.asp
 https://www.w3schools.com/js/js_properties.asp
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
