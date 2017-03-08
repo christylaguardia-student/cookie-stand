@@ -18,7 +18,7 @@
       </nav>
     </header>
     <section>
-      <h2>Daily Sales Projection</h2>
+      <h2>Daily Cookie Sales Projection</h2>
       <table class="data" id="simulatedSalesData"></table>
       <input class="button" type="button" value="Recalculate" onclick="recalculate()"><br>
       <form class="text" name="editStoreForm">
@@ -41,15 +41,15 @@
         <fieldset class="data">
           <legend>Add New Store</legend>
           <span>Store Name</span>
-          <input class="textBox" type="text" name="newStoreName"><br>
+          <input class="textBox" type="text" name="newStoreName" required><br>
           <span>Minimum Customers Per Hour</span>
-          <input class="numBox" type="number" name="newStoreMinCust" min="1" step="1"><br>
+          <input class="numBox" type="number" name="newStoreMinCust" required min="1" step="1"><br>
           <span>Maximum Customers Per Hour</span>
-          <input class="numBox" type="number" name="newStoreMaxCust" min="1" step="1"><br>
+          <input class="numBox" type="number" name="newStoreMaxCust" required min="1" step="1"><br>
           <span>Average Cookies Sold Per Hour</span>
-          <input class="numBox" type="number" name="newStoreAvgCookie" min="1" step=".1"><br>
+          <input class="numBox" type="number" name="newStoreAvgCookie" required min="1" step=".1"><br>
           <br>
-          <input class="button" type="button" value="Add New Store" onclick="addNewStore()">
+          <input class="button" type="submit" value="Add New Store" onclick="addNewStore()">
         </fieldset>
       </form>
     </section>
