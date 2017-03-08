@@ -109,69 +109,48 @@ function preFillEditForm(store) {
 }
 
 function editStore(store) {
+  // get user input
   var form = document.forms["editStoreForm"];
   var userStoreName = form.elements["editStoreName"].value;
   var userMinCust = parseInt(form.elements["editStoreMinCust"].value);
   var userMaxCust = parseInt(form.elements["editStoreMaxCust"].value);
   var userAvgCookie = parseInt(form.elements["editStoreAvgCookie"].value);
-
+  // chagne object properties
   store.name = userStoreName;
   store.minCust = userMinCust;
   store.maxCust = userMaxCust;
   store.avgCookie = userAvgCookie;
-
+  // update table
   var table = document.getElementById("simulatedSalesData");
   var oldTotalRow = document.getElementById("totalRow");
   table.removeChild(oldTotalRow);
   table.appendChild(buildTableRow(store));
   buildTotalRow();
-
 }
 
 function deleteStore(store) {
+  // remove from the array
   var index = stores.indexOf(store);
   console.log(index);
+  if (index > -1) {
+    stores.splice(index, 1);
+  }
+  // remove from the table
+  
 }
 
 function addNewStore() {
   // get user's input
   var form = document.forms["newStoreForm"];
-  var userStoreName = form.elements["newStoreName"].value;
-  var userMinCust = form.elements["newStoreMinCust"].value;
-  var userMaxCust = form.elements["newStoreMaxCust"].value;
-  var userAvgCookie = form.elements["newStoreAvgCookie"].value;
+  var userStoreName = form.elements["newStoreName"];
+  var userMinCust = form.elements["newStoreMinCust"];
+  var userMaxCust = form.elements["newStoreMaxCust"];
+  var userAvgCookie = form.elements["newStoreAvgCookie"];
 
   // check if form is filled out completely
-  if ((userStoreName === "") || (userMinCust === "") || (userMaxCust === "") || (userAvgCookie === "")) {
-    console.log("form incomplete");
-    if (userStoreName === "") {
-      document.getElementById("errorStoreName").style.visibility = "visible";
-    } else {
-      document.getElementById("errorStoreName").style.visibility = "hidden";
-    }
-    if (userMinCust === "") {
-      document.getElementById("errorMinCust").style.visibility = "visible";
-    } else {
-      document.getElementById("errorMinCust").style.visibility = "hidden";
-    }
-    if (userMaxCust === "") {
-      document.getElementById("errorMaxCust").style.visibility = "visible";
-    } else {
-      document.getElementById("errorMaxCust").style.visibility = "hidden";
-    }
-    if (userAvgCookie === "") {
-      document.getElementById("errorAvgCookie").style.visibility = "visible";
-    } else {
-      document.getElementById("errorAvgCookie").style.visibility = "hidden";
-    }
-  } else {
-    // show x's if already hidden
-    document.getElementById("errorStoreName").style.visibility = "hidden";
-    document.getElementById("errorMinCust").style.visibility = "hidden";
-    document.getElementById("errorMaxCust").style.visibility = "hidden";
-    document.getElementById("errorAvgCookie").style.visibility = "hidden";
+  if ((userStoreName.checkValidity() === true) && (userMaxCust.checkValidity() === true) && (userMinCust.checkValidity() === true) && (userAvgCookie.checkValidity() === true)) {
     // create new store object
-    var newStore = new Store(userStoreName, userMinCust, userMaxCust, userAvgCookie);
+    var newStore = new Store(userStoreName.value, userMinCust.value, userMaxCust.value, userAvgCookie.value);
     stores.push(newStore);
     // remove the old total row
     var table = document.getElementById("simulatedSalesData");
@@ -181,7 +160,7 @@ function addNewStore() {
     table.appendChild(buildTableRow(newStore));
     // add the new total row
     buildTotalRow();
-    console.log("added new store for: " + userStoreName);
+    console.log("added new store for: " + userStoreName.value);
     // console.log(newStore);
     // clear the form
     form.reset();
