@@ -42,8 +42,8 @@ nav li a:hover {
 
 section {
   margin: 150px auto 50px auto;
-  padding-left: 20px;
-  width: 840px;
+  /*padding-left: 20px;*/
+  width: 960px;
 }
 
 /*Text*/
@@ -79,8 +79,7 @@ h1, h2, h3 {
   text-align: center;
   vertical-align: middle;
   display: inline-block;
-  width: 10%;
-  min-width: 200px;
+  width: 188px;
 }
 
 #light {
@@ -113,7 +112,8 @@ h1, h2, h3 {
 table {
   /*margin: 10px auto;*/
   margin: 10px;
-  width: 800px;
+  /*width: 800px;*/
+  width: 100%;
   border: 2px solid #9B5C58;
   border-spacing: 0px;
 }
@@ -159,8 +159,8 @@ tr:last-child {
 /*Form*/
 
 form {
-  /*width: 200px;*/
-  /*display: block;*/
+  width: 350px;
+  display: inline-block;
   margin: 40px auto;
 }
 
@@ -181,17 +181,13 @@ legend {
 input {
   font-size: 16px;
   margin: 10px;
-  border: 1px solid #9B5C58;
+  /*border: 1px solid #9B5C58;*/
   border-radius: 5px;
   padding: 5px;
 }
 
-input[type=text]:focus {
-  background-color: #F5EBD1;
-}
-
 .textBox {
-  width: 300px;
+  width: 200px;
 }
 
 .numBox {
@@ -216,8 +212,8 @@ input[type=text]:focus {
 }
 
 /*Maps*/
+
 iframe {
-  /*width="600" height="450" frameborder="0" style="border:0"*/
   width: 600px;
   height: 450px;
   border: none;
@@ -228,22 +224,12 @@ iframe {
 
 .picture {
   display: inline-block;
-  /*height: 200px;*/
   width: 300px;
   margin: 10px;
 }
 
-.error {
-  visibility: hidden;
-  vertical-align: middle;
-}
-
 .rightPicture {
   float: right;
-}
-
-.leftPicture {
-  float: left;
 }
 
 figure {
@@ -267,6 +253,4 @@ footer {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  /*padding: 10px 0px 0px 20px;*/
-  /*display: inline-block;*/
 }
